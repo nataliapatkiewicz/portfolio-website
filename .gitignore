@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Archives & backups
+*.zip
+
+# Old versions (archived locally, not needed in git)
+archive/
+
+# Original flat asset folders (replaced by assets/)
+Art assets/
+Logo assets/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Thumbnails
+Thumbs.db
