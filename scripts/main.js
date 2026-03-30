@@ -1,3 +1,29 @@
+// ---- Mobile nav toggle ----
+(function() {
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if (!toggle || !links) return;
+
+  var isOpen = false;
+  var OPEN_STYLES = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(246,244,240,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:1.5rem clamp(1.25rem,4vw,3rem);gap:1.5rem;border-bottom:1px solid #ECEAE4;list-style:none;z-index:99';
+
+  toggle.onclick = function() {
+    isOpen = !isOpen;
+    links.style.cssText = isOpen ? OPEN_STYLES : '';
+    toggle.classList.toggle('is-open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  };
+
+  links.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      isOpen = false;
+      links.style.cssText = '';
+      toggle.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', false);
+    });
+  });
+}());
+
 // ---- Intersection Observer for reveal animations ----
 const observerOptions = {
   threshold: 0.1,
@@ -41,15 +67,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ---- View More toggle for project extras ----
+// ---- View More toggle for project extras + editorial sections ----
 document.querySelectorAll('.view-more-btn').forEach(btn => {
   btn.addEventListener('click', function() {
-    const targetId = this.getAttribute('data-target');
-    const extra = document.getElementById(targetId);
+    const block = this.closest('.project-block');
     const textEl = this.querySelector('.view-more-text');
-    const isOpen = extra.classList.toggle('is-open');
-    this.classList.toggle('is-open');
-    textEl.textContent = isOpen ? 'View less' : 'View more';
+
+    // Toggle project-extra (old mosaic grid extras)
+    const targetId = this.getAttribute('data-target');
+    const extra = targetId ? document.getElementById(targetId) : null;
+
+    // Toggle project-editorial (new editorial sections)
+    const editorial = block ? block.querySelector('.project-editorial') : null;
+
+    let isOpen = false;
+    if (extra) { isOpen = extra.classList.toggle('is-open'); }
+    if (editorial) { isOpen = editorial.classList.toggle('is-open'); }
+
+    this.classList.toggle('is-open', isOpen);
+    textEl.textContent = isOpen ? 'Show less' : 'View more';
   });
 });
 
@@ -66,17 +102,22 @@ document.querySelectorAll('.view-more-btn').forEach(btn => {
   let currentImages = [];
   let currentIndex = 0;
 
-  function getProjectImages(gridItem) {
-    const projectBlock = gridItem.closest('.project-block');
+  function getProjectImages(clickedEl) {
+    const projectBlock = clickedEl.closest('.project-block');
     if (!projectBlock) return [];
-    const items = projectBlock.querySelectorAll('.grid-item');
-    return Array.from(items).map(function(item) {
+
+    // Collect from both grid-items and ed-img elements
+    var images = [];
+    var items = projectBlock.querySelectorAll('.grid-item, .ed-img');
+    items.forEach(function(item) {
+      var img = item.querySelector('img');
+      if (!img) return;
       var overlaySpan = item.querySelector('.img-overlay span');
-      return {
-        src: item.querySelector('img').src,
-        caption: overlaySpan ? overlaySpan.textContent : ''
-      };
+      var descP = item.querySelector('.img-desc p');
+      var caption = overlaySpan ? overlaySpan.textContent : (descP ? descP.textContent : '');
+      images.push({ src: img.src, caption: caption });
     });
+    return images;
   }
 
   function showImage(index) {
@@ -105,7 +146,8 @@ document.querySelectorAll('.view-more-btn').forEach(btn => {
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.grid-item').forEach(function(item) {
+  // Lightbox click on grid items and editorial images
+  document.querySelectorAll('.grid-item, .ed-img').forEach(function(item) {
     item.style.cursor = 'pointer';
     item.addEventListener('click', function(e) {
       e.preventDefault();

@@ -1,4 +1,12 @@
 /* ============================================
+   UTILITY — TEMPORARILY HIDDEN CONTENT
+   Remove .temp-hidden from elements to re-enable.
+   ============================================ */
+.temp-hidden {
+  display: none !important;
+}
+
+/* ============================================
    CSS CUSTOM PROPERTIES
    ============================================ */
 :root {
@@ -21,6 +29,7 @@
   --space-lg: 3rem;
   --space-xl: 5rem;
   --space-2xl: 8rem;
+  --space-section: 6rem;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -108,11 +117,6 @@ body::before {
   color: var(--text-primary);
 }
 
-.nav-logo span {
-  font-weight: 400;
-  color: var(--text-tertiary);
-  margin-left: 0.5em;
-}
 
 .nav-links {
   display: flex;
@@ -122,7 +126,7 @@ body::before {
 
 .nav-links a {
   font-family: var(--font-display);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -147,7 +151,7 @@ body::before {
 
 .nav-cta {
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* unified small UI size */
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -186,7 +190,7 @@ body::before {
 
 .hero-label {
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -316,7 +320,7 @@ body::before {
 
 .scroll-hint span {
   font-family: var(--font-display);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -346,8 +350,8 @@ body::before {
    SERVICES SECTION
    ============================================ */
 .services {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
 }
 
 .section-header {
@@ -361,7 +365,7 @@ body::before {
 
 .section-number {
   font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -388,6 +392,8 @@ body::before {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .service-card {
@@ -466,8 +472,8 @@ body::before {
    PORTFOLIO / WORK SECTION
    ============================================ */
 .work {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
 }
 
 .project-block {
@@ -532,7 +538,7 @@ body::before {
 
 .project-grid.layout-hero {
   grid-template-columns: 1.6fr 1fr;
-  grid-template-rows: 200px 200px;
+  grid-template-rows: 260px 260px;
 }
 .project-grid.layout-hero > .grid-item:first-child {
   grid-row: 1 / 3;
@@ -555,7 +561,7 @@ body::before {
 
 .project-grid.layout-feature {
   grid-template-columns: 1.4fr 1fr 1fr;
-  grid-template-rows: 210px 210px;
+  grid-template-rows: 260px 260px;
 }
 .project-grid.layout-feature > .grid-item:first-child {
   grid-row: 1 / 3;
@@ -788,10 +794,163 @@ body::before {
 }
 
 /* ============================================
+   EDITORIAL SECTIONS (inside project-block)
+   ============================================ */
+
+/* Container — hidden until "View more" is clicked */
+.project-editorial {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s ease,
+              margin 0.4s ease;
+  margin-top: 0;
+}
+.project-editorial.is-open {
+  max-height: 6000px;
+  opacity: 1;
+  margin-top: var(--space-lg);
+}
+
+/* Shared text card */
+.ed-card {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+}
+.ed-card-label {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.75rem;
+}
+.ed-card p {
+  font-size: 0.93rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+.ed-card p + p {
+  margin-top: 0.75rem;
+}
+
+/* Shared editorial image */
+.ed-img {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background: #E8E5DE;
+}
+.ed-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+/* Hover description on editorial images */
+.ed-img .img-desc {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.25rem;
+  background: linear-gradient(transparent 0%, rgba(0,0,0,0.7) 100%);
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ed-img:hover .img-desc {
+  transform: translateY(0);
+}
+.img-desc .desc-label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.3rem;
+}
+.img-desc p {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+/* Section spacing */
+.ed-section {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.ed-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Divider between editorial sections (optional) */
+.ed-divider {
+  height: 1px;
+  background: var(--border-light);
+  margin: clamp(2rem, 4vw, 3.5rem) 0;
+}
+
+
+/* ---- LAYOUT: ULTRAWIDE ----
+   Full-width image, full-width text card below */
+.ed-ultrawide .ed-img {
+  height: clamp(300px, 35vw, 480px);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+
+/* ---- LAYOUT: MEDIUM ----
+   Image on one side (2/3), card on the other (1/3) */
+.ed-medium {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  min-height: 380px;
+}
+.ed-medium .ed-img {
+  height: 100%;
+}
+.ed-medium .ed-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* Flip variant — card left, image right */
+.ed-medium.flip {
+  grid-template-columns: 1fr 2fr;
+}
+.ed-medium.flip .ed-card {
+  order: -1;
+}
+
+
+/* ---- LAYOUT: SLIM ----
+   Two portrait images + card beside them */
+.ed-slim {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  min-height: 520px;
+}
+.ed-slim .ed-img {
+  height: 100%;
+}
+.ed-slim .ed-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* Card position variants */
+.ed-slim.card-first .ed-card { order: -1; }
+.ed-slim.card-last .ed-card { order: 3; }
+
+
+/* ============================================
    APPROACH SECTION
    ============================================ */
 .approach {
-  padding: 6rem 0;
+  padding: var(--space-section) 0;
   background: var(--bg-warm);
   position: relative;
 }
@@ -851,7 +1010,7 @@ body::before {
 
 .step-num {
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
   width: 32px;
   height: 32px;
@@ -883,14 +1042,18 @@ body::before {
    CONTACT / CTA SECTION
    ============================================ */
 .contact {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
   text-align: center;
 }
 
 .contact-inner {
   max-width: 600px;
   margin: 0 auto;
+}
+
+.contact .section-number {
+  margin-bottom: var(--space-md);
 }
 
 .contact h2 {
@@ -939,7 +1102,7 @@ body::before {
 }
 
 .footer-copy {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--text-tertiary);
 }
 
@@ -951,7 +1114,7 @@ body::before {
 
 .footer-links a {
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* unified small UI size */
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1016,6 +1179,11 @@ body::before {
   transition: all 0.3s ease;
 }
 
+/* Mobile nav link size when menu is open (JS sets the container styles directly) */
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
 /* ============================================
    RESPONSIVE
    ============================================ */
@@ -1078,6 +1246,24 @@ body::before {
     flex-direction: column;
     gap: 0.25rem;
   }
+
+  /* Editorial — tablet */
+  .ed-medium {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .ed-medium .ed-img { height: 280px; }
+  .ed-medium.flip .ed-card { order: 0; }
+
+  .ed-slim {
+    grid-template-columns: 1fr 1fr;
+    min-height: auto;
+  }
+  .ed-slim .ed-card {
+    grid-column: 1 / -1;
+    order: 3 !important;
+  }
+  .ed-slim .ed-img { height: 400px; }
 }
 
 @media (max-width: 640px) {
@@ -1094,4 +1280,11 @@ body::before {
     gap: var(--space-sm);
     text-align: center;
   }
+
+  /* Editorial — mobile */
+  .ed-slim {
+    grid-template-columns: 1fr;
+  }
+  .ed-slim .ed-card { grid-column: auto; }
+  .ed-slim .ed-img { height: 500px; }
 }

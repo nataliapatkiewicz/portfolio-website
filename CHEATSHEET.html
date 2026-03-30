@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Cheat Sheet — Layout & Naming Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F6F4F0;
+  --surface: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #5A5A5A;
+  --text-tertiary: #8A8A8A;
+  --border: #E0DDD6;
+  --border-light: #ECEAE4;
+  --accent-blue: #2563EB;
+  --accent-green: #059669;
+  --accent-amber: #D97706;
+  --accent-purple: #7C3AED;
+  --font-display: 'Instrument Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text-primary); line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+
+/* Header */
+.page-header {
+  text-align: center;
+  padding: 4rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+}
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+.page-header p { color: var(--text-secondary); max-width: 540px; margin: 0 auto; font-size: 0.95rem; }
+
+/* Sections */
+.cs-section {
+  margin-bottom: 4rem;
+}
+.cs-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.cs-section h2 .badge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border-radius: 100px;
+  color: #fff;
+}
+.badge-preview { background: var(--accent-blue); }
+.badge-editorial { background: var(--accent-green); }
+.badge-naming { background: var(--accent-amber); }
+.badge-workflow { background: var(--accent-purple); }
+
+.cs-section > p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 0.93rem;
+}
+
+/* Layout cards */
+.layout-card {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.layout-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.layout-card .class-name {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.78rem;
+  color: var(--accent-blue);
+  background: #EEF2FF;
+  padding: 0.15em 0.5em;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+.layout-card .class-name.green {
+  color: var(--accent-green);
+  background: #ECFDF5;
+}
+.layout-card p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.layout-card .grid-diagram {
+  margin-top: 1rem;
+  display: flex;
+  gap: 4px;
+  height: 60px;
+}
+.layout-card .grid-diagram .slot {
+  background: var(--border-light);
+  border-radius: 6px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.layout-card .grid-diagram .slot.big { flex: 1.6; }
+.layout-card .grid-diagram .slot.card-slot {
+  background: #FAFAFA;
+  border: 1px dashed var(--border);
+  color: var(--accent-green);
+}
+.layout-card .grid-diagram-stacked {
+  margin-top: 1rem;
+  display: grid;
+  gap: 4px;
+  height: 80px;
+}
+.layout-card .grid-diagram-stacked .slot {
+  background: var(--border-light);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.layout-card .grid-diagram-stacked .slot.card-slot {
+  background: #FAFAFA;
+  border: 1px dashed var(--border);
+  color: var(--accent-green);
+}
+
+/* Naming table */
+.naming-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.naming-table th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.naming-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+}
+.naming-table code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  color: var(--accent-blue);
+  background: #EEF2FF;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+}
+.naming-table .example {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+/* Code block */
+.code-block {
+  background: #1E1E2E;
+  color: #CDD6F4;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.78rem;
+  line-height: 1.8;
+  margin-top: 1rem;
+}
+.code-block .comment { color: #6C7086; }
+.code-block .tag { color: #89B4FA; }
+.code-block .attr { color: #A6E3A1; }
+.code-block .string { color: #F9E2AF; }
+.code-block .class { color: #CBA6F7; }
+
+/* Workflow steps */
+.workflow-steps {
+  counter-reset: step;
+}
+.wf-step {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+.wf-step::before {
+  counter-increment: step;
+  content: counter(step);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.wf-step-content h4 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.wf-step-content p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+.wf-step-content code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--accent-blue);
+  background: #EEF2FF;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+}
+
+/* Tip box */
+.tip-box {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+}
+.tip-box strong {
+  font-family: var(--font-display);
+  color: var(--accent-green);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.tip-box p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-top: 0.3rem;
+}
+
+/* Divider */
+.cs-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 3rem 0;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="page-header">
+    <h1>Portfolio Cheat Sheet</h1>
+    <p>Quick reference for layout components, image naming, and how to build new project pages.</p>
+  </div>
+
+
+  <!-- ==========================================
+       SECTION 1: PREVIEW GRID LAYOUTS
+       ========================================== -->
+  <div class="cs-section">
+    <h2><span class="badge badge-preview">Preview</span> Preview Grid Layouts</h2>
+    <p>These are the always-visible mosaic grids at the top of each project. Pick one class for the <code>&lt;div class="project-grid ..."&gt;</code> wrapper.</p>
+
+    <div class="layout-card">
+      <h3>Hero</h3>
+      <span class="class-name">layout-hero</span>
+      <p>1 large image left, 2 stacked right. Best for 3 images where one is the star.</p>
+      <div class="grid-diagram">
+        <div class="slot big" style="grid-row: span 2;">IMG 1</div>
+        <div style="display:flex;flex-direction:column;gap:4px;flex:1;">
+          <div class="slot" style="flex:1;">IMG 2</div>
+          <div class="slot" style="flex:1;">IMG 3</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-card">
+      <h3>Pair</h3>
+      <span class="class-name">layout-pair</span>
+      <p>2 equal columns. Clean and balanced for 2 key images.</p>
+      <div class="grid-diagram">
+        <div class="slot">IMG 1</div>
+        <div class="slot">IMG 2</div>
+      </div>
+    </div>
+
+    <div class="layout-card">
+      <h3>Trio</h3>
+      <span class="class-name">layout-trio</span>
+      <p>3 equal columns. Great for showing range or a series.</p>
+      <div class="grid-diagram">
+        <div class="slot">IMG 1</div>
+        <div class="slot">IMG 2</div>
+        <div class="slot">IMG 3</div>
+      </div>
+    </div>
+
+    <div class="layout-card">
+      <h3>Wide</h3>
+      <span class="class-name">layout-wide</span>
+      <p>1 full-width image. Perfect for panoramas, storyboards, or hero shots.</p>
+      <div class="grid-diagram">
+        <div class="slot" style="flex:1;">IMG 1</div>
+      </div>
+    </div>
+
+    <div class="layout-card">
+      <h3>Feature</h3>
+      <span class="class-name">layout-feature</span>
+      <p>1 big left + 3 small right. For 4 images with a clear hero.</p>
+      <div class="grid-diagram">
+        <div class="slot big">IMG 1</div>
+        <div style="display:flex;flex-direction:column;gap:4px;flex:1;">
+          <div class="slot" style="flex:1;">IMG 2</div>
+          <div class="slot" style="flex:1;">IMG 3</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-card">
+      <h3>Mosaic</h3>
+      <span class="class-name">layout-mosaic</span>
+      <p>2-column auto-flowing grid. Works with any number of images (5, 6, 7+).</p>
+      <div class="grid-diagram">
+        <div class="slot">IMG 1</div>
+        <div class="slot">IMG 2</div>
+        <div class="slot">IMG 3</div>
+        <div class="slot">...</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cs-divider"></div>
+
+
+  <!-- ==========================================
+       SECTION 2: EDITORIAL LAYOUTS
+       ========================================== -->
+  <div class="cs-section">
+    <h2><span class="badge badge-editorial">Editorial</span> Editorial Section Layouts</h2>
+    <p>These go inside <code>&lt;div class="project-editorial"&gt;</code> and are revealed when the user clicks "View more". Mix and match freely within a single project.</p>
+
+    <div class="layout-card">
+      <h3>Ultrawide</h3>
+      <span class="class-name green">ed-ultrawide</span>
+      <p>Full-width image spanning edge to edge, text card below matching the same width. Best for panoramic art, wide landscapes, and hero moments.</p>
+      <div style="margin-top:1rem;">
+        <div class="slot" style="background:var(--border-light);border-radius:6px;height:50px;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:600;color:var(--text-tertiary);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px;">ULTRAWIDE IMAGE</div>
+        <div class="slot card-slot" style="background:#FAFAFA;border:1px dashed var(--border);border-radius:6px;height:30px;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:600;color:var(--accent-green);letter-spacing:0.05em;text-transform:uppercase;">TEXT CARD</div>
+      </div>
+    </div>
+
+    <div class="layout-card">
+      <h3>Medium</h3>
+      <span class="class-name green">ed-medium</span>
+      <p>Image takes 2/3, text card takes 1/3. Best for landscape art (like June's Journey environments). Add <code>flip</code> class to swap sides.</p>
+      <div class="grid-diagram">
+        <div class="slot" style="flex:2;">IMAGE (2/3)</div>
+        <div class="slot card-slot">CARD (1/3)</div>
+      </div>
+      <p style="margin-top:0.75rem;font-size:0.82rem;color:var(--text-tertiary);"><strong>Flipped:</strong> <code>ed-medium flip</code> = card left, image right</p>
+    </div>
+
+    <div class="layout-card">
+      <h3>Slim</h3>
+      <span class="class-name green">ed-slim</span>
+      <p>Two portrait/phone-ratio images side by side + text card. Best for mobile UI, phone screenshots, character lineups. Use <code>card-first</code> or <code>card-last</code> to position the card.</p>
+      <div class="grid-diagram">
+        <div class="slot">SLIM 1</div>
+        <div class="slot">SLIM 2</div>
+        <div class="slot card-slot">CARD</div>
+      </div>
+      <p style="margin-top:0.75rem;font-size:0.82rem;color:var(--text-tertiary);"><strong>Variants:</strong> <code>ed-slim card-last</code> (card on right) or <code>ed-slim card-first</code> (card on left)</p>
+    </div>
+
+    <div class="tip-box">
+      <strong>Tip: Image descriptions</strong>
+      <p>Each <code>ed-img</code> can have an optional hover description. Add a <code>&lt;div class="img-desc"&gt;</code> inside with a <code>&lt;span class="desc-label"&gt;</code> and a <code>&lt;p&gt;</code>. It slides up on hover. You can also omit it entirely for images that don't need explanation.</p>
+    </div>
+  </div>
+
+
+  <div class="cs-divider"></div>
+
+
+  <!-- ==========================================
+       SECTION 3: IMAGE NAMING CONVENTIONS
+       ========================================== -->
+  <div class="cs-section">
+    <h2><span class="badge badge-naming">Naming</span> Image File Naming</h2>
+    <p>Keep file names consistent so you (and Claude) can quickly identify what goes where.</p>
+
+    <table class="naming-table">
+      <thead>
+        <tr>
+          <th>Purpose</th>
+          <th>Naming Pattern</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Preview grid images</td>
+          <td><code>preview-01.jpg</code></td>
+          <td class="example">preview-01.jpg, preview-02.jpg, preview-03.jpg</td>
+        </tr>
+        <tr>
+          <td>Ultrawide images</td>
+          <td><code>ultra-01.jpg</code></td>
+          <td class="example">ultra-hero.jpg, ultra-panorama.jpg</td>
+        </tr>
+        <tr>
+          <td>Medium images</td>
+          <td><code>med-01.jpg</code></td>
+          <td class="example">med-environment.jpg, med-process.jpg</td>
+        </tr>
+        <tr>
+          <td>Slim / portrait images</td>
+          <td><code>slim-01.jpg</code></td>
+          <td class="example">slim-gameplay.jpg, slim-ui-dark.jpg</td>
+        </tr>
+        <tr>
+          <td>General / misc</td>
+          <td><code>detail-01.jpg</code></td>
+          <td class="example">detail-closeup.jpg, detail-texture.jpg</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box" style="margin-top:1.5rem;">
+      <strong>Folder structure</strong>
+      <p>Each project lives in <code>assets/projects/project-name/</code>. Keep all images for one project in one folder. When talking to Claude, just say "add a new ultrawide section using ultra-01.jpg from project-name" and it'll know exactly what to do.</p>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border-light);border-radius:12px;padding:1.25rem 1.5rem;margin-top:1rem;">
+      <p style="font-size:0.82rem;color:var(--text-tertiary);font-weight:600;font-family:var(--font-display);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.5rem;">Example folder</p>
+      <pre style="font-family:'SF Mono','Fira Code',monospace;font-size:0.8rem;line-height:1.8;color:var(--text-secondary);">assets/projects/junes-journey/
+  preview-01.jpg      <span style="color:var(--text-tertiary);">// hero mosaic - evening terrace</span>
+  preview-02.jpg      <span style="color:var(--text-tertiary);">// hero mosaic - greek taverna</span>
+  preview-03.jpg      <span style="color:var(--text-tertiary);">// hero mosaic - coastal dock</span>
+  ultra-porch.jpg     <span style="color:var(--text-tertiary);">// editorial ultrawide section</span>
+  med-office.jpg      <span style="color:var(--text-tertiary);">// editorial medium section</span>
+  med-grayscale.jpg   <span style="color:var(--text-tertiary);">// editorial medium flipped section</span>
+  slim-ui-01.jpg      <span style="color:var(--text-tertiary);">// editorial slim section</span>
+  slim-ui-02.jpg      <span style="color:var(--text-tertiary);">// editorial slim section</span></pre>
+    </div>
+  </div>
+
+
+  <div class="cs-divider"></div>
+
+
+  <!-- ==========================================
+       SECTION 4: WORKFLOW
+       ========================================== -->
+  <div class="cs-section">
+    <h2><span class="badge badge-workflow">Workflow</span> Adding a New Project</h2>
+    <p>Step-by-step process for adding a complete project with editorial sections.</p>
+
+    <div class="workflow-steps">
+      <div class="wf-step">
+        <div class="wf-step-content">
+          <h4>Create folder & name images</h4>
+          <p>Create <code>assets/projects/your-project/</code> and add your images using the naming conventions above.</p>
+        </div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-step-content">
+          <h4>Copy the blank template</h4>
+          <p>In <code>index.html</code>, find the "BLANK TEMPLATE" comment near the bottom of the work section. Copy everything between the CUT lines.</p>
+        </div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-step-content">
+          <h4>Fill in project details</h4>
+          <p>Replace PROJECT NAME, role, tags, and image paths. Choose a preview grid layout (<code>layout-hero</code>, <code>layout-pair</code>, etc.).</p>
+        </div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-step-content">
+          <h4>Build editorial sections</h4>
+          <p>Inside <code>&lt;div class="project-editorial"&gt;</code>, add <code>ed-ultrawide</code>, <code>ed-medium</code>, and/or <code>ed-slim</code> sections. Mix types to create an editorial flow. You can have as many or as few as you want.</p>
+        </div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-step-content">
+          <h4>Remove what you don't need</h4>
+          <p>Not every project needs all 3 editorial types. Delete entire <code>ed-section</code> blocks you don't need. You can also omit the <code>&lt;div class="project-editorial"&gt;</code> entirely if a project should only have the preview grid.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>Talking to Claude</strong>
+      <p>Use these phrases for fast edits: "Add an <strong>ed-ultrawide</strong> section to June's Journey using <strong>ultra-01.jpg</strong>" or "Flip the medium section in Book of Quack" or "Add a new <strong>ed-slim</strong> with <strong>slim-01.jpg</strong> and <strong>slim-02.jpg</strong> to the casual game project". Claude will know exactly which component and files you mean.</p>
+    </div>
+  </div>
+
+  <div style="height:3rem;"></div>
+
+</div>
+
+</body>
+</html>
