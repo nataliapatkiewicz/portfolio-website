@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natalia Patkiewicz — Art Direction & Visual Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css?v=2">
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Natalia Patkiewicz</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li class="temp-hidden"><a href="#services">Services</a></li>
+      <li><a href="#approach">About Me</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero container" id="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <p class="hero-label">Art Leadership &middot; Visual Development &middot; Pipeline Consulting</p>
+      <h1 class="hero-title">Art&nbsp;Leadership<br>that&nbsp;connects<br>production<br>and&nbsp;craft.</h1>
+      <p class="hero-subtitle">I help casual and indie studios build visual identities and streamline production pipelines. Bridging art and development so both sides speak the same language and move together.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">See Projects</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-mosaic">
+      <div class="mosaic-img">
+        <img src="assets/projects/junes-journey/Wooga_04.jpg" alt="June's Journey — Mediterranean scene" loading="eager">
+      </div>
+      <div class="mosaic-img">
+        <img src="assets/projects/book-of-quack/Book of Quack_ 03.jpg" alt="Book of Quack — Temple garden" loading="eager">
+      </div>
+      <div class="mosaic-img">
+        <img src="assets/projects/personal/natalia-patkiewicz-summoned-schnitzel-2-copy.jpg" alt="3D Art — Summoned Schnitzel" loading="eager">
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================
+     SERVICES
+     ============================================ -->
+<section class="services container temp-hidden" id="services">
+  <div class="section-header reveal">
+    <span class="section-number">01</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Services</h2>
+  </div>
+  <div class="services-grid stagger-children">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </div>
+      <h3>Art Direction</h3>
+      <p>End-to-end art leadership for casual mobile games and indie titles. Defining visual identity, managing art teams, and ensuring creative vision translates from concept to final product.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <h3>Visual Development</h3>
+      <p>Environment design, character concepts, color scripts, and mood explorations. Building the visual language that makes a game world feel alive and consistent.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+      </div>
+      <h3>Pipeline Consulting</h3>
+      <p>Streamlining art production workflows. From asset handoff to tool selection, optimizing how art gets made so teams ship faster without sacrificing quality.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     WORK / PORTFOLIO
+     ============================================ -->
+<section class="work container" id="work">
+  <div class="section-header reveal">
+    <span class="section-number">01</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Selected Work</h2>
+  </div>
+
+  <!--
+  ============================================================
+    HOW TO EDIT THIS PORTFOLIO — QUICK GUIDE
+    (See also: CHEATSHEET.html for visual reference)
+  ============================================================
+
+    REORDER PROJECTS: Cut an entire <div class="project-block"> ... </div>
+    block and paste it above or below another one. That's it.
+
+    ADD A NEW PROJECT:
+    1. Create a new folder in assets/projects/your-project-name/
+    2. Put your images there (see CHEATSHEET.html for naming conventions)
+    3. Copy the template at the bottom of this section (marked BLANK TEMPLATE),
+       paste it where you want, and fill in the details.
+
+    ─── PREVIEW GRID LAYOUTS (always visible) ───
+
+      layout-hero    → 1 big image left, 2 stacked right (3 images)
+      layout-trio    → 3 equal columns (3 images)
+      layout-pair    → 2 equal columns (2 images)
+      layout-wide    → 1 full-width image (panoramas/storyboards)
+      layout-feature → 1 big left + 3 small right (4 images)
+      layout-mosaic  → 2-column masonry-ish (5-6 images, any number)
+
+    ─── EDITORIAL LAYOUTS (inside project-editorial, revealed on click) ───
+
+      ed-ultrawide        → Full-width image + text card below
+      ed-medium           → Image left (2/3) + card right (1/3)
+      ed-medium flip      → Card left (1/3) + image right (2/3)
+      ed-slim card-last   → 2 portrait images left + card right
+      ed-slim card-first  → Card left + 2 portrait images right
+
+    Mix any number of these inside one <div class="project-editorial">.
+
+  ============================================================
+  -->
+
+
+  <!-- ==================== PROJECT: June's Journey ==================== -->
+  <div class="project-block reveal">
+    <div class="project-header">
+      <h3 class="project-name">June's Journey</h3>
+      <span class="project-role">Senior Environment Artist — Wooga</span>
+      <div class="project-tags">
+        <span class="tag">Environments</span>
+        <span class="tag">Mobile</span>
+        <span class="tag">Hidden Object</span>
+      </div>
+    </div>
+    <!-- HERO IMAGES — your best 3, always visible -->
+    <div class="project-grid layout-hero">
+      <div class="grid-item">
+        <img src="assets/projects/junes-journey/Wooga_01.jpg" alt="June's Journey — Porch sunset scene" loading="lazy">
+        <div class="img-overlay"><span>Evening Terrace — Environment Design</span></div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/projects/junes-journey/Wooga_04.jpg" alt="June's Journey — Greek taverna" loading="lazy">
+        <div class="img-overlay"><span>Greek Taverna — Mediterranean Set</span></div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/projects/junes-journey/Wooga_06.jpg" alt="June's Journey — Beach dock" loading="lazy">
+        <div class="img-overlay"><span>Coastal Dock — Daytime Scene</span></div>
+      </div>
+    </div>
+    <!-- EDITORIAL SECTIONS — hidden until "View more" is clicked -->
+    <div class="project-editorial">
+
+      <!-- ULTRAWIDE: full-width scene, text below -->
+      <div class="ed-section ed-ultrawide">
+        <div class="ed-img">
+          <img src="assets/projects/junes-journey/Wooga_03.jpg" alt="June's Journey — Victorian Porch" loading="lazy">
+          <div class="img-desc">
+            <span class="desc-label">Night Lighting</span>
+            <p>Victorian Porch — Same architecture, completely different mood through warm interior glow against a cool night sky.</p>
+          </div>
+        </div>
+        <div class="ed-card">
+          <div class="ed-card-label">Overview</div>
+          <p>Created richly detailed environments for Wooga's hit hidden-object game. Each scene needed to tell a story while hiding dozens of interactive objects in plain sight — balancing visual density with readability.</p>
+        </div>
+      </div>
+
+      <!-- MEDIUM: image left, card right -->
+      <div class="ed-section ed-medium">
+        <div class="ed-img">
+          <img src="assets/projects/junes-journey/Wooga_02.jpg" alt="June's Journey — Detective office process" loading="lazy">
+          <div class="img-desc">
+            <span class="desc-label">Process Breakdown</span>
+            <p>From grayscale composition to final render — a layered approach to environment storytelling.</p>
+          </div>
+        </div>
+        <div class="ed-card">
+          <div class="ed-card-label">Approach</div>
+          <p>Developed a layered composition system — foreground, midground, background — with colour temperature and directional lighting guiding the player's eye naturally through each scene.</p>
+        </div>
+      </div>
+
+      <!-- MEDIUM FLIPPED: card left, image right -->
+      <div class="ed-section ed-medium flip">
+        <div class="ed-img">
+          <img src="assets/projects/junes-journey/Wooga_05.jpg" alt="June's Journey — Grayscale compositions" loading="lazy">
+          <div class="img-desc">
+            <span class="desc-label">Exploration</span>
+            <p>Grayscale composition studies testing object placement and visual flow before committing to colour.</p>
+          </div>
+        </div>
+        <div class="ed-card">
+          <div class="ed-card-label">Impact</div>
+          <p>Contributed 20+ scenes across 3 seasonal updates, each maintaining the visual quality bar while meeting tight production deadlines.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="view-more-btn">
+      <span class="view-more-text">View more</span>
+      <svg class="view-more-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+
+  <!-- ==================== PROJECT: Book of Quack ==================== -->
+  <div class="project-block reveal">
+    <div class="project-header">
+      <h3 class="project-name">Book of Quack</h3>
+      <span class="project-role">Art Director & Visual Development</span>
+      <div class="project-tags">
+        <span class="tag">Vis Dev</span>
+        <span class="tag">Art Direction</span>
+        <span class="tag">Indie</span>
+      </div>
+    </div>
+    <!-- HERO IMAGES — best 2, always visible -->
+    <div class="project-grid layout-pair">
+      <div class="grid-item">
+        <img src="assets/projects/book-of-quack/Book of Quack_ 01.jpg" alt="Book of Quack — Dark forest action scene" loading="lazy">
+        <div class="img-overlay"><span>Dark Forest — Key Moment Illustration</span></div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/projects/book-of-quack/Book of Quack_ 03.jpg" alt="Book of Quack — Temple garden with characters" loading="lazy">
+        <div class="img-overlay"><span>Temple Garden — Environment & Characters</span></div>
+      </div>
+    </div>
+    <!-- EDITORIAL SECTIONS -->
+    <div class="project-editorial">
+
+      <!-- ULTRAWIDE: full-width panoramic -->
+      <div class="ed-section ed-ultrawide">
+        <div class="ed-img">
+          <img src="assets/projects/book-of-quack/Book of Quack_ 02.jpg" alt="Book of Quack — Forest clearing" loading="lazy">
+          <div class="img-desc">
+            <span class="desc-label">Atmospheric Concept</span>
+            <p>Forest Clearing — Deep shadows with saturated accent lighting create the distinctive look of the game world.</p>
+          </div>
+        </div>
+        <div class="ed-card">
+          <div class="ed-card-label">Overview</div>
+          <p>Led visual development and art direction for an indie action-adventure title. Defined the game's entire visual identity — from early concepts through to production-ready assets. The challenge was building a cohesive dark-fantasy world that felt atmospheric without alienating casual players.</p>
+        </div>
+      </div>
+
+      <!-- MEDIUM: storyboard lineup -->
+      <div class="ed-section ed-medium">
+        <div class="ed-img">
+          <img src="assets/projects/book-of-quack/Book of Quack_story board lineup.jpg" alt="Book of Quack — Storyboard lineup" loading="lazy">
+          <div class="img-desc">
+            <span class="desc-label">Character Design</span>
+            <p>Storyboard lineup — Establishing character proportions and visual relationships across the full cast.</p>
+          </div>
+        </div>
+        <div class="ed-card">
+          <div class="ed-card-label">Approach</div>
+          <p>Every key moment illustration needed to convey both narrative stakes and the game's tonal balance between darkness and warmth. Deep shadows paired with saturated accent lighting created the distinctive look.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="view-more-btn">
+      <span class="view-more-text">View more</span>
+      <svg class="view-more-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+
+  <!-- ==================== PROJECT: Casual Game Prototype ==================== -->
+  <div class="project-block reveal">
+    <div class="project-header">
+      <h3 class="project-name">Casual Game Prototype</h3>
+      <span class="project-role">Art Direction & UI Design</span>
+      <div class="project-tags">
+        <span class="tag">Mobile</span>
+        <span class="tag">Casual</span>
+        <span class="tag">UI/UX</span>
+      </div>
+    </div>
+    <div class="project-grid layout-wide">
+      <div class="grid-item">
+        <img src="assets/projects/personal/Untitled_Artwork 10.jpg" alt="Casual puzzle game — UI and art direction" loading="lazy">
+        <div class="img-overlay"><span>Puzzle Game — UI Skins & Art Direction</span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==================== PROJECT: Personal & Explorations ==================== -->
+  <div class="project-block reveal">
+    <div class="project-header">
+      <h3 class="project-name">Personal & Explorations</h3>
+      <span class="project-role">Vis Dev, 3D, Concept Art</span>
+      <div class="project-tags">
+        <span class="tag">Personal</span>
+        <span class="tag">3D</span>
+      </div>
+    </div>
+    <div class="project-grid layout-pair">
+      <div class="grid-item">
+        <img src="assets/projects/personal/Rest_v2.jpg" alt="Fishing scene — personal concept art" loading="lazy">
+        <div class="img-overlay"><span>Rest — Personal Concept Painting</span></div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/projects/personal/natalia-patkiewicz-summoned-schnitzel-2-copy.jpg" alt="Summoned Schnitzel — 3D art" loading="lazy">
+        <div class="img-overlay"><span>Summoned Schnitzel — 3D Illustration</span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--
+  ============================================================
+    BLANK TEMPLATE — Copy everything between the CUT lines,
+    paste above, and fill in your details.
+  ============================================================
+  ~~~~~~~~ CUT HERE ~~~~~~~~
+
+  <div class="project-block reveal">
+    <div class="project-header">
+      <h3 class="project-name">PROJECT NAME</h3>
+      <span class="project-role">Your Role — Studio Name</span>
+      <div class="project-tags">
+        <span class="tag">Tag 1</span>
+        <span class="tag">Tag 2</span>
+      </div>
+    </div>
+
+    ~~ PREVIEW GRID (always visible — pick a layout class) ~~
+    <div class="project-grid layout-pair">
+      <div class="grid-item">
+        <img src="assets/projects/PROJECT/preview-01.jpg" alt="Description" loading="lazy">
+        <div class="img-overlay"><span>Caption</span></div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/projects/PROJECT/preview-02.jpg" alt="Description" loading="lazy">
+        <div class="img-overlay"><span>Caption</span></div>
+      </div>
+    </div>
+
+    ~~ EDITORIAL SECTIONS (hidden until "View more") ~~
+    <div class="project-editorial">
+
+      ~~ ULTRAWIDE section ~~
+      <div class="ed-section ed-ultrawide">
+        <div class="ed-img">
+          <img src="assets/projects/PROJECT/ultra-01.jpg" alt="Description" loading="lazy">
+          <div class="img-desc">
+            <span class="desc-label">Label</span>
+            <p>Image description here.</p>
+          </div>
+        </div>
+        <div class="ed-card">
+          <div class="ed-card-label">Overview</div>
+          <p>Project description here.</p>
+        </div>
+      </div>
+
+      ~~ MEDIUM section (image left, card right) ~~
+      <div class="ed-section ed-medium">
+        <div class="ed-img">
+          <img src="assets/projects/PROJECT/med-01.jpg" alt="Description" loading="lazy">
+          <div class="img-desc">
+            <span class="desc-label">Label</span>
+            <p>Image description.</p>
+          </div>
+        </div>
+        <div class="ed-card">
+          <div class="ed-card-label">Approach</div>
+          <p>Text here.</p>
+        </div>
+      </div>
+
+      ~~ MEDIUM FLIPPED (card left, image right) ~~
+      <div class="ed-section ed-medium flip">
+        <div class="ed-img">
+          <img src="assets/projects/PROJECT/med-02.jpg" alt="Description" loading="lazy">
+        </div>
+        <div class="ed-card">
+          <div class="ed-card-label">Impact</div>
+          <p>Text here.</p>
+        </div>
+      </div>
+
+      ~~ SLIM section (2 portrait images + card) ~~
+      <div class="ed-section ed-slim card-last">
+        <div class="ed-img">
+          <img src="assets/projects/PROJECT/slim-01.jpg" alt="Description" loading="lazy">
+        </div>
+        <div class="ed-img">
+          <img src="assets/projects/PROJECT/slim-02.jpg" alt="Description" loading="lazy">
+        </div>
+        <div class="ed-card">
+          <div class="ed-card-label">Details</div>
+          <p>Text here.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="view-more-btn">
+      <span class="view-more-text">View more</span>
+      <svg class="view-more-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  ~~~~~~~~ CUT HERE ~~~~~~~~
+  -->
+</section>
+
+<!-- ============================================
+     APPROACH
+     ============================================ -->
+<section class="approach" id="approach">
+  <div class="approach-inner container">
+    <div class="section-header reveal">
+      <span class="section-number">02</span>
+      <div class="section-line"></div>
+      <h2 class="section-title">Approach</h2>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-text reveal">
+        <h2>Structure meets<br>imagination.</h2>
+        <p>Great game art doesn't happen by accident. It comes from clear creative direction, efficient pipelines, and the freedom to explore within well-defined boundaries.</p>
+      </div>
+      <div class="approach-steps stagger-children">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <h4>Discover & Define</h4>
+            <p>Understanding the game's soul — its audience, mechanics, and emotional core. Establishing visual pillars that guide every decision downstream.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <h4>Explore & Develop</h4>
+            <p>Rapid visual exploration through color scripts, mood boards, and style frames. Finding the sweet spot between ambition and production reality.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <h4>Build & Ship</h4>
+            <p>Production-ready assets, style guides, and pipeline documentation. Making sure the vision survives the journey from Photoshop to the player's screen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CONTACT
+     ============================================ -->
+<section class="contact container" id="contact">
+  <div class="contact-inner reveal">
+    <p class="section-number">03</p>
+    <h2>Let's build<br>something together.</h2>
+    <p>Currently available for art direction, visual development, and pipeline consulting on casual mobile and indie game projects.</p>
+    <a href="mailto:hello@nataliapatkiewicz.com" class="contact-email">hello&#64;nataliapatkiewicz.com</a>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="footer-copy">&copy; 2026 Natalia Patkiewicz</span>
+    <ul class="footer-links">
+      <li><a href="#">ArtStation</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Instagram</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- ============================================
+     LIGHTBOX OVERLAY
+     ============================================ -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-counter" id="lightbox-counter"></span>
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="lightbox-next" id="lightbox-next" aria-label="Next image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+  </button>
+  <div class="lightbox-img-wrapper">
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+<!-- ============================================
+     SCRIPTS
+     ============================================ -->
+<script src="scripts/main.js?v=2"></script>
+<script>
+(function() {
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if (!toggle || !links) return;
+  var isOpen = false;
+  var OPEN = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(246,244,240,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:1.5rem clamp(1.25rem,4vw,3rem);gap:1.5rem;border-bottom:1px solid #ECEAE4;list-style:none;z-index:99';
+  toggle.onclick = function() {
+    isOpen = !isOpen;
+    links.style.cssText = isOpen ? OPEN : '';
+    toggle.classList.toggle('is-open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  };
+  links.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      isOpen = false;
+      links.style.cssText = '';
+      toggle.classList.remove('is-open');
+    });
+  });
+}());
+</script>
+</body>
+</html>
