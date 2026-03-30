@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybrid Layout v2 — Uniform Collapsed + Unfurl</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F6F4F0;
+  --bg-warm: #EFECE6;
+  --surface: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #5A5A5A;
+  --text-tertiary: #8A8A8A;
+  --accent: #2A2A2A;
+  --border: #E0DDD6;
+  --border-light: #ECEAE4;
+  --font-display: 'Instrument Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
+  --space-section: 6rem;
+  --max-width: 1320px;
+
+  /* Uniform collapsed height for all projects */
+  --project-collapsed-height: 420px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+/* Page header */
+.mockup-header {
+  text-align: center;
+  padding: var(--space-section) 0 var(--space-lg);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-section);
+}
+.mockup-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+.mockup-header p {
+  color: var(--text-secondary);
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+}
+
+
+/* ============================================
+   PROJECT BLOCK
+   ============================================ */
+.project-block {
+  margin-bottom: var(--space-section);
+}
+
+/* Project header */
+.project-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border);
+}
+.project-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.project-role {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+.project-tags {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+.tag {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  border: 1px solid var(--border);
+  padding: 0.35em 1em;
+  border-radius: 100px;
+}
+
+
+/* ============================================
+   COLLAPSED STATE — uniform height
+   Card (left 1/3) + hero image (right 2/3)
+   ============================================ */
+.project-collapsed {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  height: var(--project-collapsed-height);
+}
+
+/* ---- Card (left side) ---- */
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-preview {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+/* Inline "... read more" */
+.read-more-inline {
+  display: inline;
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+.read-more-inline:hover {
+  color: var(--text-secondary);
+}
+
+/* Meta row pinned to bottom of card */
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+}
+.meta-item label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.15rem;
+}
+.meta-item span {
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ---- Hero image (right side) ---- */
+.project-hero-img {
+  border-radius: 16px;
+  overflow: hidden;
+  height: 100%;
+}
+.project-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.project-hero-img:hover img {
+  transform: scale(1.02);
+}
+
+/* Subtle "see full project" indicator on image */
+.hero-indicator {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.5));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.project-hero-img {
+  position: relative;
+}
+.project-hero-img:hover .hero-indicator {
+  opacity: 1;
+}
+.hero-indicator span {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hero-indicator svg {
+  width: 16px;
+  height: 16px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+
+/* ============================================
+   EXPANDED STATE — full gallery unfurls below
+   ============================================ */
+.project-expanded {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s ease,
+              margin 0.4s ease;
+  margin-top: 0;
+}
+.project-expanded.is-open {
+  max-height: 2000px;
+  opacity: 1;
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* Expanded inner layout: card extends + full grid */
+.expanded-body {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: start;
+}
+
+/* Extended card details */
+.card-extended {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.card-detail {
+  margin-bottom: 1.25rem;
+}
+.card-detail:last-child {
+  margin-bottom: 0;
+}
+.card-detail dt {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.card-detail dt svg {
+  width: 13px; height: 13px;
+  stroke: var(--text-tertiary);
+  fill: none;
+  stroke-width: 1.5;
+}
+.card-detail dd {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* Expanded image grid */
+.expanded-grid {
+  display: grid;
+  gap: 12px;
+}
+.expanded-grid.grid-trio {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 300px;
+}
+.expanded-grid.grid-pair {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 340px;
+}
+.expanded-grid.grid-wide {
+  grid-template-columns: 1fr;
+  grid-template-rows: 380px;
+}
+
+.grid-item {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+.grid-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* Per-image hover description */
+.grid-item .img-desc {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.25rem;
+  background: linear-gradient(transparent 0%, rgba(0,0,0,0.75) 100%);
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.grid-item:hover .img-desc {
+  transform: translateY(0);
+}
+.img-desc .desc-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 0.35rem;
+}
+.img-desc p {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+
+/* ============================================
+   "SEE MORE / SHOW LESS" BUTTON
+   ============================================ */
+.project-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  padding: 0.85em 2em;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.project-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: var(--surface);
+}
+.project-toggle svg {
+  width: 14px; height: 14px;
+  transition: transform 0.3s ease;
+}
+.project-toggle.is-open svg {
+  transform: rotate(180deg);
+}
+
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 960px) {
+  :root {
+    --project-collapsed-height: auto;
+  }
+
+  .project-collapsed {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .project-card {
+    height: auto;
+  }
+  .project-hero-img {
+    height: 280px;
+  }
+
+  .expanded-body {
+    grid-template-columns: 1fr;
+  }
+  .expanded-grid.grid-trio {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .expanded-grid.grid-trio .grid-item {
+    height: 250px;
+  }
+  .expanded-grid.grid-pair {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .expanded-grid.grid-pair .grid-item {
+    height: 250px;
+  }
+
+  .project-header {
+    flex-wrap: wrap;
+  }
+  .project-tags {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="mockup-header">
+    <h1>Hybrid Layout v2</h1>
+    <p>Uniform collapsed height across all projects. Each shows a card + hero image. Click "See full project" to unfurl the complete gallery and detailed brief below.</p>
+  </div>
+
+
+  <!-- ==================== PROJECT 1: June's Journey ==================== -->
+  <div class="project-block" id="project-jj">
+    <div class="project-header">
+      <h3 class="project-name">June's Journey</h3>
+      <span class="project-role">Senior Environment Artist — Wooga</span>
+      <div class="project-tags">
+        <span class="tag">Environments</span>
+        <span class="tag">Mobile</span>
+        <span class="tag">Hidden Object</span>
+      </div>
+    </div>
+
+    <!-- COLLAPSED: uniform height, card + hero image -->
+    <div class="project-collapsed">
+      <div class="project-card">
+        <div class="card-preview">
+          Created richly detailed environments for Wooga's hit hidden-object game. Each scene needed to tell a story while hiding dozens of interactive objects in plain sight.
+          <button class="read-more-inline" onclick="toggleProject('project-jj')">... see full project</button>
+        </div>
+        <div class="card-meta">
+          <div class="meta-item">
+            <label>Role</label>
+            <span>Sr. Environment Artist</span>
+          </div>
+          <div class="meta-item">
+            <label>Year</label>
+            <span>2021–2023</span>
+          </div>
+          <div class="meta-item">
+            <label>Tools</label>
+            <span>Photoshop, Illustrator</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-hero-img">
+        <img src="assets/projects/junes-journey/Wooga_01.jpg" alt="June's Journey — Evening Terrace">
+        <div class="hero-indicator">
+          <span>See full project</span>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPANDED: unfurls below -->
+    <div class="project-expanded" id="expanded-jj">
+      <div class="expanded-body">
+        <div class="card-extended">
+          <dl>
+            <div class="card-detail">
+              <dt>
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                Challenge
+              </dt>
+              <dd>Design environments dense enough for hidden-object gameplay while maintaining readability and visual appeal at mobile resolution. Every scene must contain 35+ findable objects without feeling cluttered.</dd>
+            </div>
+            <div class="card-detail">
+              <dt>
+                <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                Solution
+              </dt>
+              <dd>Developed a layered composition system with clear foreground/midground/background separation. Used color temperature and directional lighting to guide the player's eye naturally through each scene.</dd>
+            </div>
+            <div class="card-detail">
+              <dt>
+                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                Impact
+              </dt>
+              <dd>Contributed 20+ scenes across 3 seasonal updates. Player engagement metrics exceeded team average by 15%. The composition approach was adopted as the studio standard.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="expanded-grid grid-trio">
+          <div class="grid-item">
+            <img src="assets/projects/junes-journey/Wooga_04.jpg" alt="Greek Taverna">
+            <div class="img-desc">
+              <span class="desc-label">Mediterranean Set</span>
+              <p>Greek Taverna — Saturated palette for the Summer chapter. Complementary colors create focal points for gameplay.</p>
+            </div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/projects/junes-journey/Wooga_06.jpg" alt="Coastal Dock">
+            <div class="img-desc">
+              <span class="desc-label">Daytime Scene</span>
+              <p>Coastal Dock — Cooler tonal range to contrast warmer interiors. Open composition provides visual rest.</p>
+            </div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/projects/junes-journey/Wooga_03.jpg" alt="Victorian Porch">
+            <div class="img-desc">
+              <span class="desc-label">Night Lighting</span>
+              <p>Victorian Porch — Demonstrating the dramatic mood shift possible within the same architectural set.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="project-toggle" onclick="toggleProject('project-jj')">
+      <span>See full project</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </div>
+
+
+  <!-- ==================== PROJECT 2: Book of Quack ==================== -->
+  <div class="project-block" id="project-boq">
+    <div class="project-header">
+      <h3 class="project-name">Book of Quack</h3>
+      <span class="project-role">Art Director & Visual Development</span>
+      <div class="project-tags">
+        <span class="tag">Vis Dev</span>
+        <span class="tag">Art Direction</span>
+        <span class="tag">Indie</span>
+      </div>
+    </div>
+
+    <div class="project-collapsed">
+      <div class="project-card">
+        <div class="card-preview">
+          Led visual development and art direction for an indie action-adventure title. Defined the game's entire visual identity from early concepts through to production-ready assets.
+          <button class="read-more-inline" onclick="toggleProject('project-boq')">... see full project</button>
+        </div>
+        <div class="card-meta">
+          <div class="meta-item">
+            <label>Role</label>
+            <span>Art Director</span>
+          </div>
+          <div class="meta-item">
+            <label>Year</label>
+            <span>2023–2024</span>
+          </div>
+          <div class="meta-item">
+            <label>Tools</label>
+            <span>Photoshop, Blender</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-hero-img">
+        <img src="assets/projects/book-of-quack/Book of Quack_ 01.jpg" alt="Book of Quack — Dark Forest">
+        <div class="hero-indicator">
+          <span>See full project</span>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-expanded" id="expanded-boq">
+      <div class="expanded-body">
+        <div class="card-extended">
+          <dl>
+            <div class="card-detail">
+              <dt>
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                Challenge
+              </dt>
+              <dd>Create a dark-fantasy visual language that feels atmospheric without alienating casual players. Small team meant wearing multiple hats across concept, production, and pipeline.</dd>
+            </div>
+            <div class="card-detail">
+              <dt>
+                <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                Solution
+              </dt>
+              <dd>Balanced moodiness with warmth through a controlled color palette — deep shadows paired with saturated accent lighting. Built a style guide and reusable asset library.</dd>
+            </div>
+            <div class="card-detail">
+              <dt>
+                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                Impact
+              </dt>
+              <dd>Established a distinctive visual identity that set the game apart. Style guide reduced onboarding time for new artists by 40%.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="expanded-grid grid-pair">
+          <div class="grid-item">
+            <img src="assets/projects/book-of-quack/Book of Quack_ 03.jpg" alt="Temple Garden">
+            <div class="img-desc">
+              <span class="desc-label">Environment & Characters</span>
+              <p>Temple Garden — The warmer, inviting side of the world. Character integration with environment storytelling.</p>
+            </div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/projects/book-of-quack/Book of Quack_ 02.jpg" alt="Forest Clearing">
+            <div class="img-desc">
+              <span class="desc-label">Atmospheric Concept</span>
+              <p>Forest Clearing — Showcasing the balance between dark atmosphere and warm accent lighting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="project-toggle" onclick="toggleProject('project-boq')">
+      <span>See full project</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </div>
+
+
+  <!-- ==================== PROJECT 3: Casual Game ==================== -->
+  <div class="project-block" id="project-cg">
+    <div class="project-header">
+      <h3 class="project-name">Casual Game Prototype</h3>
+      <span class="project-role">Art Direction & UI Design</span>
+      <div class="project-tags">
+        <span class="tag">Mobile</span>
+        <span class="tag">Casual</span>
+        <span class="tag">UI/UX</span>
+      </div>
+    </div>
+
+    <div class="project-collapsed">
+      <div class="project-card">
+        <div class="card-preview">
+          Designed the complete visual identity and UI system for a casual puzzle game prototype. Focused on creating a playful, accessible art style with clear visual hierarchy for touch-based gameplay.
+          <button class="read-more-inline" onclick="toggleProject('project-cg')">... see full project</button>
+        </div>
+        <div class="card-meta">
+          <div class="meta-item">
+            <label>Type</label>
+            <span>Prototype</span>
+          </div>
+          <div class="meta-item">
+            <label>Tools</label>
+            <span>Figma, Photoshop</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-hero-img">
+        <img src="assets/projects/personal/Untitled_Artwork 10.jpg" alt="Casual Game UI">
+        <div class="hero-indicator">
+          <span>See full project</span>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-expanded" id="expanded-cg">
+      <div class="expanded-body">
+        <div class="card-extended">
+          <dl>
+            <div class="card-detail">
+              <dt>
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                Challenge
+              </dt>
+              <dd>Create a UI system and art style that appeals to a broad casual audience while standing out in a crowded mobile market.</dd>
+            </div>
+            <div class="card-detail">
+              <dt>
+                <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                Solution
+              </dt>
+              <dd>Developed multiple UI skin variants with a playful color palette. Prioritized touch-target sizes and visual feedback for satisfying gameplay feel.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- No extra images for this project — card only -->
+      </div>
+    </div>
+
+    <button class="project-toggle" onclick="toggleProject('project-cg')">
+      <span>See full project</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </div>
+
+
+  <!-- ==================== PROJECT 4: Personal ==================== -->
+  <div class="project-block" id="project-personal">
+    <div class="project-header">
+      <h3 class="project-name">Personal & Explorations</h3>
+      <span class="project-role">Vis Dev, 3D, Concept Art</span>
+      <div class="project-tags">
+        <span class="tag">Personal</span>
+        <span class="tag">3D</span>
+      </div>
+    </div>
+
+    <div class="project-collapsed">
+      <div class="project-card">
+        <div class="card-preview">
+          A collection of personal projects exploring different styles, mediums, and techniques. From concept paintings to 3D illustrations — work driven by curiosity and creative play.
+          <button class="read-more-inline" onclick="toggleProject('project-personal')">... see full project</button>
+        </div>
+        <div class="card-meta">
+          <div class="meta-item">
+            <label>Type</label>
+            <span>Personal work</span>
+          </div>
+          <div class="meta-item">
+            <label>Tools</label>
+            <span>Photoshop, Blender, Procreate</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-hero-img">
+        <img src="assets/projects/personal/Rest_v2.jpg" alt="Rest — Personal Concept Painting">
+        <div class="hero-indicator">
+          <span>See full project</span>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-expanded" id="expanded-personal">
+      <div class="expanded-body">
+        <div class="card-extended">
+          <dl>
+            <div class="card-detail">
+              <dt>
+                <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                About
+              </dt>
+              <dd>Personal explorations that push beyond day-to-day production work. These pieces let me experiment with mood, lighting, and new tools — skills that feed back into my professional practice.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="expanded-grid grid-wide">
+          <div class="grid-item">
+            <img src="assets/projects/personal/natalia-patkiewicz-summoned-schnitzel-2-copy.jpg" alt="Summoned Schnitzel — 3D">
+            <div class="img-desc">
+              <span class="desc-label">3D Illustration</span>
+              <p>Summoned Schnitzel — A playful 3D illustration exploring stylized characters and whimsical food themes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="project-toggle" onclick="toggleProject('project-personal')">
+      <span>See full project</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<div style="height: 4rem;"></div>
+
+<script>
+function toggleProject(blockId) {
+  var block = document.getElementById(blockId);
+  // Derive the expanded panel id from block id
+  var expandedId = 'expanded-' + blockId.replace('project-', '');
+  var expanded = document.getElementById(expandedId);
+  var toggleBtn = block.querySelector('.project-toggle');
+  var isOpen = expanded.classList.contains('is-open');
+
+  if (isOpen) {
+    expanded.classList.remove('is-open');
+    toggleBtn.classList.remove('is-open');
+    toggleBtn.querySelector('span').textContent = 'See full project';
+  } else {
+    expanded.classList.add('is-open');
+    toggleBtn.classList.add('is-open');
+    toggleBtn.querySelector('span').textContent = 'Show less';
+  }
+}
+</script>
+
+</body>
+</html>
