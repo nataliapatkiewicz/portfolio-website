@@ -180,3 +180,13 @@ document.querySelectorAll('.view-more-btn').forEach(btn => {
     }
   });
 })();
+
+// ---- Email obfuscation (anti-harvester) ----
+(function() {
+  var el = document.getElementById('contact-email');
+  if (!el) return;
+  var u = 'contact';
+  var d = 'nataliapatkiewicz.com';
+  el.href = 'mai' + 'lto:' + u + '@' + d;
+  el.textContent = u + '@' + d;
+})();

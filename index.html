@@ -495,9 +495,9 @@
   <div class="container footer-inner">
     <span class="footer-copy">&copy; 2026 Natalia Patkiewicz</span>
     <ul class="footer-links">
-      <li><a href="#">ArtStation</a></li>
-      <li><a href="#">LinkedIn</a></li>
-      <li><a href="#">Instagram</a></li>
+      <li><a href="https://www.artstation.com/npatkiewicz" target="_blank" rel="noopener noreferrer">ArtStation</a></li>
+      <li><a href="https://www.linkedin.com/in/natalia-patkiewicz/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/nataliapatkiewicz/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
     </ul>
   </div>
 </footer>
@@ -525,28 +525,6 @@
 <!-- ============================================
      SCRIPTS
      ============================================ -->
-<script src="scripts/main.js?v=2"></script>
-<script>
-(function() {
-  var toggle = document.querySelector('.nav-toggle');
-  var links = document.querySelector('.nav-links');
-  if (!toggle || !links) return;
-  var isOpen = false;
-  var OPEN = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(246,244,240,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:1.5rem clamp(1.25rem,4vw,3rem);gap:1.5rem;border-bottom:1px solid #ECEAE4;list-style:none;z-index:99';
-  toggle.onclick = function() {
-    isOpen = !isOpen;
-    links.style.cssText = isOpen ? OPEN : '';
-    toggle.classList.toggle('is-open', isOpen);
-    toggle.setAttribute('aria-expanded', isOpen);
-  };
-  links.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      isOpen = false;
-      links.style.cssText = '';
-      toggle.classList.remove('is-open');
-    });
-  });
-}());
-</script>
+<script src="scripts/main.js?v=3"></script>
 </body>
 </html>
