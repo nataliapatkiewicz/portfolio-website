@@ -252,10 +252,17 @@ a { text-decoration: none; color: inherit; }
   .mosaic-item:nth-child(2) { grid-row: auto; }
   .mosaic-item:nth-child(3) { grid-column: auto; }
   .mosaic-item:nth-child(4) { grid-column: auto; }
-  /* Disable expand on mobile — touch doesn't hover well */
+  /* Disable expand on mobile — touch triggers :hover and deforms grid */
+  .mosaic:has(.mosaic-item:nth-child(1):hover),
+  .mosaic:has(.mosaic-item:nth-child(2):hover),
+  .mosaic:has(.mosaic-item:nth-child(3):hover),
+  .mosaic:has(.mosaic-item:nth-child(4):hover),
   .mosaic:has(.mosaic-item:hover) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 1fr 1fr !important;
+  }
+  .mosaic-item:hover img {
+    transform: none !important;
   }
 
   .socials {
@@ -274,7 +281,7 @@ a { text-decoration: none; color: inherit; }
 
   <h1 class="heading">Something new<br>is in the works.</h1>
 
-  <p class="subtext">Art Leadership & Visual Development for casual and indie games. Full portfolio coming soon.</p>
+  <p class="subtext">Art Leadership and Visual Development for casual and indie games.<br>Full portfolio coming soon.</p>
 
   <div class="mosaic">
     <div class="mosaic-item">
